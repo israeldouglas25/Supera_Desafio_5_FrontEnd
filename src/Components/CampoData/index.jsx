@@ -1,4 +1,3 @@
-import './CampoData.css'
 
 const Campotexto = (props) => {
 
@@ -7,9 +6,9 @@ const Campotexto = (props) => {
     }
     
     return(
-        <div className="campo-texto">
-            <label>{props.label}</label>
-            <input value={props.valor} onChange={aoDigitar} type={props.type} placeholder={props.placeholder} />
+        <div>
+            <label className="form-label">{props.label}</label>
+            <input className="form-control" value={props.valor} onChange={aoDigitar} type={props.type} placeholder={props.placeholder} />
         </div>
     )
 }

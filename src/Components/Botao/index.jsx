@@ -1,8 +1,7 @@
-import './Botao.css'
 
 const Botao = (props) => {
     return (
-        <button className="botao">
+        <button type="button" className="btn btn-primary">
             {props.children}
         </button>
     )
