@@ -17,6 +17,10 @@ const Transfererencia = () => {
 
     return (
         <div>
+            <div className='d-flex justify-content-evenly fs-4 mb-3'>
+                <span><strong>Saldo:</strong>  {transferencia.reduce((prev, curr) => prev + curr.valor, 0)}</span>
+                <span><strong>Saldo por Periodo:</strong>  {transferencia.reduce((prev, curr) => prev + curr.valor, 0)}</span>
+            </div>
             <table className="table table-striped">
                 <thead>
                     <tr>
