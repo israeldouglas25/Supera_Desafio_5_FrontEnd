@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import api from '../../Services/Api'
+import formatDate from '../../Services/Utils';
 
 
-const Transfererencia = () => {
+const Transfererencia = (props) => {
 
     const [transferencia, setTransferencia] = useState([])
 
@@ -33,7 +34,7 @@ const Transfererencia = () => {
                 <tbody>
                     {transferencia.map(trans => (
                         <tr key={trans.id}>
-                            <td>{trans.dataTransferencia}</td>
+                            <td>{formatDate(trans.dataTransferencia)}</td>
                             <td>{trans.valor}</td>
                             <td>{trans.tipo}</td>
                             <td>{trans.nomeOperadorTransacao}</td>
