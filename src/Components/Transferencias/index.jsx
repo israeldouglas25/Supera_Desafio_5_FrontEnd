@@ -5,6 +5,8 @@ import formatDate from '../../Services/Utils';
 
 const Transfererencia = (props) => {
 
+    const formatNumber = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+    
     const [transferencia, setTransferencia] = useState([])
 
     useEffect(() => {
@@ -19,8 +21,8 @@ const Transfererencia = (props) => {
     return (
         <div>
             <div className='d-flex justify-content-evenly fs-4 mb-3'>
-                <span><strong>Saldo:</strong>  {transferencia.reduce((prev, curr) => prev + curr.valor, 0)}</span>
-                <span><strong>Saldo por Periodo:</strong>  {transferencia.reduce((prev, curr) => prev + curr.valor, 0)}</span>
+                <span><strong>Saldo:</strong>  {formatNumber.format(transferencia.reduce((prev, curr) => prev + curr.valor, 0))}</span>
+                <span><strong>Saldo por Periodo:</strong>  {formatNumber.format(transferencia.reduce((prev, curr) => prev + curr.valor, 0))}</span>
             </div>
             <table className="table table-striped">
                 <thead>
@@ -35,7 +37,7 @@ const Transfererencia = (props) => {
                     {transferencia.map(trans => (
                         <tr key={trans.id}>
                             <td>{formatDate(trans.dataTransferencia)}</td>
-                            <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(trans.valor)}</td>
+                            <td>{formatNumber.format(trans.valor)}</td>
                             <td>{trans.tipo}</td>
                             <td>{trans.nomeOperadorTransacao}</td>
                         </tr>
