@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Botao from "../Botao";
-import Campotexto from "../CampoData";
+import Campotexto from "../CampoTexto";
 import Transferencias from "../Transferencias";
 import './Formulario.css'
 
@@ -12,11 +12,14 @@ const Formulario = (props) => {
 
     const aoSalvar = (event) => {
         event.preventDefault()
-        props.aoEvent([
+        props.aoEvent({
             dataInicio,
             dataFim,
             nome
-        ])
+        })
+        setNome('');
+        setDataInicio('');
+        setDataFim('');
     }
 
     return (
@@ -43,12 +46,13 @@ const Formulario = (props) => {
                     <div className='col'>
                         <Campotexto
                             label='Nome do operador'
+                            type='text'
                             placeholder='Digite seu nome aqui'
                             valor={nome}
                             aoAlterado={valor => setNome(valor)}
                         />
                     </div>
-                    <div className="d-flex justify-content-end my-5">
+                    <div className="d-flex justify-content-end my-3">
                         <Botao>
                             Pesquisar
                         </Botao>

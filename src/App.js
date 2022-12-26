@@ -3,16 +3,16 @@ import Formulario from './Components/Formulario';
 
 function App() {
 
-  const [transferencias, setTransferencias] = useState([])
+  const [dados, setDados] = useState('')
 
-  const listaTransferencia = (transferencia) => {
-    console.log(transferencia)
-    setTransferencias([...transferencias, transferencia])
+  const pegarDados = (dado) => {
+    console.log(dado)
+    setDados(...dados, dado)
   }
 
   return (
     <div>
-      <Formulario aoEvent={transferencia => listaTransferencia(transferencia)} />
+      <Formulario aoEvent={dado => pegarDados(dado)} />
     </div>
   );
 }
