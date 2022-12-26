@@ -35,7 +35,7 @@ const Transfererencia = (props) => {
                     {transferencia.map(trans => (
                         <tr key={trans.id}>
                             <td>{formatDate(trans.dataTransferencia)}</td>
-                            <td>{trans.valor}</td>
+                            <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(trans.valor)}</td>
                             <td>{trans.tipo}</td>
                             <td>{trans.nomeOperadorTransacao}</td>
                         </tr>
