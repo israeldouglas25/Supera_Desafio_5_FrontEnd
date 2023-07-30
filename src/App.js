@@ -3,11 +3,11 @@ import Formulario from './Components/Formulario';
 
 function App() {
 
-  const [dados, setDados] = useState('')
+  const [dados, setDados] = useState([])
 
   const pegarDados = (dado) => {
     console.log(dado)
-    setDados(...dados, dado)
+    setDados([...dados, dado])
   }
 
   return (

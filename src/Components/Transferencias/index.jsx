@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react';
 import api from '../../Services/Api'
 import formatDate from '../../Services/Utils';
+import Paginacao from '../Paginacao';
 
 
-const Transfererencia = (props) => {
+const Transfererencia = () => {
 
     const formatNumber = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-    
-    const [transferencia, setTransferencia] = useState([])
+
+    const [transferencia, setTransferencia] = useState([]);
+    const [transfPerPage] = useState(4);
+    const [currentPage, setCurrentPage] = useState(0);
+
+    const pages = Math.ceil(transferencia.length / transfPerPage);
+    const startIndex = currentPage * transfPerPage;
+    const endIndex = startIndex + transfPerPage;
+    const currentTransf = transferencia.slice(startIndex, endIndex);
 
     useEffect(() => {
         api
@@ -34,7 +42,7 @@ const Transfererencia = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {transferencia.map(trans => (
+                    {currentTransf.map(trans => (
                         <tr key={trans.id}>
                             <td>{formatDate(trans.dataTransferencia)}</td>
                             <td>{formatNumber.format(trans.valor)}</td>
@@ -44,6 +52,7 @@ const Transfererencia = (props) => {
                     ))}
                 </tbody>
             </table>
+            <Paginacao pages={pages} setCurrentPage={setCurrentPage} />
         </div>
     )
 
